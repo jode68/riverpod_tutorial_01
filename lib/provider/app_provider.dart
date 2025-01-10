@@ -5,10 +5,6 @@ import 'package:template68/provider/app_test.dart';
 class AppProvider extends StateNotifier<List<AppModel>> {
   AppProvider() : super(appMyList);
 
-  void init() {
-    state = appMyList;
-  }
-
   void isDone(int index) {
     state = [
       ...state..[index] = state[index].copyWith(isDone: !state[index].isDone)
