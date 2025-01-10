@@ -16,12 +16,12 @@ class AppProvider extends StateNotifier<List<AppModel>> {
   void editItem(AppModel appModel, int index) {
     state = [...state..[index] = appModel];
   }
-}
 
-void isDone(int index) {
-  state = [
-    ...state..[index] = state[index].copyWith(isDone: !state[index].isDone)
-  ];
+  void isDone(int index) {
+    state = [
+      ...state..[index] = state[index].copyWith(isDone: !state[index].isDone)
+    ];
+  }
 }
 
 final appProvider = StateNotifierProvider<AppProvider, List<AppModel>>(
