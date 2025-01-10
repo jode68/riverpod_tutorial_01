@@ -18,9 +18,7 @@ class AppProvider extends StateNotifier<List<AppModel>> {
   }
 
   void isDone(int index) {
-    state = [
-      ...state..[index] = state[index].copyWith(isDone: !state[index].isDone)
-    ];
+    state = [...state..[index].isDone = !state[index].isDone];
   }
 }
 
