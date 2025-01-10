@@ -1,12 +1,16 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:template68/provider/app_provider.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends ConsumerWidget {
   const DetailPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final appModel = Get.arguments;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appModel = ref.watch(appProvider);
+    final index = Get.arguments;
+    final appMyList = appModel[index];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Page'),
@@ -26,11 +30,13 @@ class DetailPage extends StatelessWidget {
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
-              title: Text(appModel.title),
-              subtitle: Text(appModel.description),
+              title: Text(appMyList.title),
+              subtitle: Text(appMyList.description),
               trailing: Checkbox(
-                value: appModel.isDone,
-                onChanged: (_) {},
+                value: appMyList.isDone,
+                onChanged: (_) {
+                  ref.read(appProvider.notifier).isDone(index);
+                },
               ),
             ),
           ),

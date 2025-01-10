@@ -32,7 +32,7 @@ class HomePage extends ConsumerWidget {
         itemBuilder: (context, index) {
           final appModel = appState[index];
           return ListTile(
-            onTap: () => Get.toNamed('/detailPage', arguments: appModel),
+            onTap: () => Get.toNamed('/detailPage', arguments: index),
             title: Text(appModel.title),
             subtitle: Text(appModel.description),
             trailing: Checkbox(

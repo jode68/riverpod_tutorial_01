@@ -10,9 +10,9 @@ class AppProvider extends StateNotifier<List<AppModel>> {
   }
 
   void isDone(int index) {
-    state = [...state]
-      ..removeAt(index)
-      ..insert(index, state[index].copyWith(isDone: !state[index].isDone));
+    state = [
+      ...state..[index] = state[index].copyWith(isDone: !state[index].isDone)
+    ];
   }
 
   void addItem(AppModel appModel) {
@@ -20,13 +20,11 @@ class AppProvider extends StateNotifier<List<AppModel>> {
   }
 
   void removeItem(int index) {
-    state = [...state]..removeAt(index);
+    state = [...state..removeAt(index)];
   }
 
   void editItem(AppModel appModel, int index) {
-    state = [...state]
-      ..removeAt(index)
-      ..insert(index, appModel);
+    state = [...state..[index] = appModel];
   }
 }
 
