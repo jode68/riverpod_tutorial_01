@@ -23,7 +23,5 @@ class AppProvider extends StateNotifier<List<AppModel>> {
 }
 
 final appProvider = StateNotifierProvider<AppProvider, List<AppModel>>(
-  (ref) {
-    return AppProvider();
-  },
+  (ref) => AppProvider(),
 );

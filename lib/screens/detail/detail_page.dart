@@ -9,9 +9,9 @@ class DetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appModel = ref.watch(appProvider);
+    final appState = ref.watch(appProvider);
     final index = Get.arguments;
-    final appMyList = appModel[index];
+    final appModel = appState[index];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Page'),
@@ -31,10 +31,10 @@ class DetailPage extends ConsumerWidget {
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
-              title: Text(appMyList.title),
-              subtitle: Text(appMyList.description),
+              title: Text(appModel.title),
+              subtitle: Text(appModel.description),
               trailing: Checkbox(
-                value: appMyList.isDone,
+                value: appModel.isDone,
                 onChanged: (_) => ref.read(appProvider.notifier).isDone(index),
               ),
               leading: IconButton(
